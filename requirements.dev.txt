@@ -5,7 +5,7 @@
 # linting, formatação de código e harness de IA.
 # ==============================================================================
 
--r requirements.txt.production
+-r requirements.production.txt
 
 # Qualidade de Código, Linting & Formatação
 ruff>=0.4.4
