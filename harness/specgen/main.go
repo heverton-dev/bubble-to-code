@@ -169,9 +169,13 @@ func cleanColumnName(rawKey string) string {
 }
 
 func main() {
-	bubblePath := flag.String("file", "gestao-contratos-conexao.bubble", "Arquivo .bubble")
+	bubblePath := flag.String("file", "app.bubble", "Arquivo .bubble")
 	harnessDir := flag.String("harness", "extracted_app_harness", "Diretório do harness")
 	flag.Parse()
+
+	if len(flag.Args()) > 0 && *bubblePath == "app.bubble" {
+		*bubblePath = flag.Args()[0]
+	}
 
 	start := time.Now()
 	fmt.Printf("⚡ [Go Spec Generator] Iniciando processamento de: %s\n", *bubblePath)

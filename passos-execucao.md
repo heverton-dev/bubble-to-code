@@ -23,11 +23,9 @@ Certifique-se de que os seguintes arquivos existem no diretório raiz:
 Get-ChildItem -Path . -Include *.bubble, harness -Recurse
 ```
 
-- Arquivo `.bubble` (ex: `gestao-contratos-conexao.bubble`).
-- Diretório `harness/decompiler/main.go` (motor de extração).
-- Diretório `harness/specgen/main.go` (motor de geração de especificações).
-
-> ⚠️ **Atenção:** O arquivo `main.go` na raiz pertence à linha de execução local com Ollama/Llama e **não deve ser modificado nem executado** pelo harness.
+- Arquivo `.bubble` (ex: `<seu-app.bubble>`).
+- Código-fonte da CLI unificada em `main.go`.
+- Submódulos auxiliares em `harness/decompiler/main.go` e `harness/specgen/main.go`.
 
 ---
 
@@ -48,7 +46,7 @@ go build -ldflags="-s -w" -o bubble-to-code.exe main.go
 Execute o binário unificado passando o arquivo `.bubble` e o diretório de saída:
 
 ```powershell
-.\bubble-to-code.exe -file gestao-contratos-conexao.bubble -out extracted_app_harness
+.\bubble-to-code.exe -file <seu-app.bubble> -out extracted_app_harness
 ```
 
 > **Tempo total esperado:** < 1 segundo (~800ms).  

@@ -79,7 +79,7 @@ go build -ldflags="-s -w" -o bubble-to-code.exe main.go
 Execute passando o caminho do dump `.bubble`:
 
 ```powershell
-.\bubble-to-code.exe -file gestao-contratos-conexao.bubble -out extracted_app_harness
+.\bubble-to-code.exe -file <seu-app.bubble> -out extracted_app_harness
 ```
 
 Pronto! Em menos de 1 segundo toda a documentação `SPEC.md` estará pronta para uso em `./extracted_app_harness/`.
@@ -87,7 +87,7 @@ Pronto! Em menos de 1 segundo toda a documentação `SPEC.md` estará pronta par
 ### Flags Opcionais:
 * `-decompile`: Executa apenas o fatiamento em JSON sem gerar os arquivos markdown.
 * `-specs`: Executa apenas a geração das especificações técnicas `SPEC.md`.
-* `-file <caminho>`: Define o arquivo `.bubble` de entrada (padrão: `gestao-contratos-conexao.bubble`).
+* `-file <caminho>`: Define o arquivo `.bubble` de entrada (padrão: `app.bubble`).
 * `-out <caminho>`: Define o diretório de destino (padrão: `extracted_app_harness`).
 
 ---

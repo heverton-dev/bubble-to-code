@@ -30,11 +30,11 @@ Ao interagir com o terminal neste repositório, utilize exclusivamente os comand
 go build -ldflags="-s -w" -o bubble-to-code.exe main.go
 
 # 2. Execução do pipeline completo (Decompile + SPEC.md)
-.\bubble-to-code.exe -file gestao-contratos-conexao.bubble -out extracted_app_harness
+.\bubble-to-code.exe -file <seu-app.bubble> -out extracted_app_harness
 
 # 3. Execução modular (se necessário)
-.\bubble-to-code.exe -decompile -file gestao-contratos-conexao.bubble -out extracted_app_harness
-.\bubble-to-code.exe -specs -file gestao-contratos-conexao.bubble -out extracted_app_harness
+.\bubble-to-code.exe -decompile -file <seu-app.bubble> -out extracted_app_harness
+.\bubble-to-code.exe -specs -file <seu-app.bubble> -out extracted_app_harness
 ```
 
 ---

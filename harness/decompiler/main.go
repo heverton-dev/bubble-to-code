@@ -66,11 +66,11 @@ func saveJSON(filePath string, data interface{}) error {
 }
 
 func main() {
-	inputFile := flag.String("file", "gestao-contratos-conexao.bubble", "Caminho do arquivo .bubble")
+	inputFile := flag.String("file", "app.bubble", "Caminho do arquivo .bubble")
 	outputDir := flag.String("out", "extracted_app_harness", "Diretório de saída para os artefatos")
 	flag.Parse()
 
-	if len(flag.Args()) > 0 && *inputFile == "gestao-contratos-conexao.bubble" {
+	if len(flag.Args()) > 0 && *inputFile == "app.bubble" {
 		*inputFile = flag.Args()[0]
 	}
 

@@ -750,11 +750,15 @@ func generateUIPagesSpecs(harnessDir string, manifest *ManifestDump) {
 // ========================================================
 
 func main() {
-	inputFile := flag.String("file", "gestao-contratos-conexao.bubble", "Arquivo .bubble a ser processado")
+	inputFile := flag.String("file", "app.bubble", "Arquivo .bubble a ser processado")
 	outputDir := flag.String("out", "extracted_app_harness", "Diretório de saída")
 	decompileOnly := flag.Bool("decompile", false, "Executa somente a extração JSON do dump")
 	specsOnly := flag.Bool("specs", false, "Executa somente a geração dos SPEC.md")
 	flag.Parse()
+
+	if len(flag.Args()) > 0 && *inputFile == "app.bubble" {
+		*inputFile = flag.Args()[0]
+	}
 
 	start := time.Now()
 	fmt.Println("🚀 [bubble-to-code] Motor de Engenharia Reversa Nativo")
