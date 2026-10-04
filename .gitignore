@@ -1,0 +1,27 @@
+# Dumps de projetos e dados sensíveis
+*.bubble
+*.json.dump
+
+# Pastas de extração de dados e artefatos gerados
+extracted_app/
+extracted_app_harness/
+
+# Binários compilados
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bubble-analyzer.exe
+bubble-decompiler.exe
+bubble-spec-generator.exe
+
+# Dependências e caches
+node_modules/
+vendor/
+.DS_Store
+Thumbs.db
+
+# Logs e arquivos de sistema
+*.log
+.system_generated/
