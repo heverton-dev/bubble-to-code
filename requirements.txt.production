@@ -1,0 +1,19 @@
+# ==============================================================================
+# BUBBLE-TO-CODE: PRODUCTION ENVIRONMENT DEPENDENCIES
+# ==============================================================================
+# O núcleo da aplicação é 100% nativo em Go (Go 1.24+).
+# Este arquivo lista os requisitos e ferramentas de runtime/produção
+# para esteiras de CI/CD, validação de schemas e automação.
+# ==============================================================================
+
+# Validação e Processamento de Dados / Schemas
+pydantic>=2.7.0
+jsonschema>=4.21.0
+
+# Ferramentas de Banco de Dados e Migrações (PostgreSQL)
+psycopg2-binary>=2.9.9
+sqlparse>=0.5.0
+
+# Utilitários de CLI e Logging em Produção
+rich>=13.7.1
+click>=8.1.7
