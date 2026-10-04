@@ -33,43 +33,28 @@ Get-ChildItem -Path . -Include *.bubble, harness -Recurse
 
 ## 3. Passo a Passo de Execução
 
-### Passo 1: Compilar as Ferramentas Nativas em Go
+### Passo 1: Compilar o Executável Nativo
 
-Compile os binários otimizados sem símbolos de depuração (`-ldflags="-s -w"`):
+Compile o binário otimizado sem símbolos de depuração (`-ldflags="-s -w"`):
 
 ```powershell
-# 1. Compilar o decompilador do Bubble
-go build -ldflags="-s -w" -o bubble-decompiler.exe ./harness/decompiler
-
-# 2. Compilar o gerador nativo de especificações
-go build -ldflags="-s -w" -o bubble-spec-generator.exe ./harness/specgen
+go build -ldflags="-s -w" -o bubble-to-code.exe main.go
 ```
 
 ---
 
-### Passo 2: Executar a Extração Agnóstica (Decompiler)
+### Passo 2: Executar o Pipeline Completo (Decompile + Specs)
 
-Execute o binário passando o arquivo `.bubble` e o diretório de destino:
-
-```powershell
-.\bubble-decompiler.exe -file gestao-contratos-conexao.bubble -out extracted_app_harness
-```
-
-> **Tempo esperado:** < 500ms.  
-> **Resultado esperado:** Geração da pasta `extracted_app_harness/` com `app_manifest.json`, `01_database/`, `02_workflows/` e `03_ui_pages/`.
-
----
-
-### Passo 3: Gerar Todas as Especificações Técnicas (`SPEC.md`)
-
-Execute o motor de geração de especificações apontando para o dump e o diretório extraído:
+Execute o binário unificado passando o arquivo `.bubble` e o diretório de saída:
 
 ```powershell
-.\bubble-spec-generator.exe -file gestao-contratos-conexao.bubble -harness extracted_app_harness
+.\bubble-to-code.exe -file gestao-contratos-conexao.bubble -out extracted_app_harness
 ```
 
-> **Tempo esperado:** < 1s.  
-> **Resultado esperado:** Geração automatizada de todos os arquivos `SPEC.md` no disco.
+> **Tempo total esperado:** < 1 segundo (~800ms).  
+> **Resultado esperado:** Fatiamento completo em JSON (`01_database`, `02_workflows`, `03_ui_pages`) e geração automática de todos os arquivos `SPEC.md`.
+
+*(Opcional: Se desejar rodar apenas a extração de JSONs, use `.\bubble-to-code.exe -decompile`. Para rodar apenas as specs, use `.\bubble-to-code.exe -specs`).*
 
 ---
 
